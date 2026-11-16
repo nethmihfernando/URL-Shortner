@@ -1,0 +1,105 @@
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #1c1f26;
+  --muted: #667085;
+  --border: #d8dce3;
+  --accent: #2f6fed;
+  --accent-text: #ffffff;
+  --danger: #d92d20;
+  --code-bg: #f0f2f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --card: #1d2026;
+    --text: #e8eaee;
+    --muted: #98a2b3;
+    --border: #2f343d;
+    --accent: #5b8dff;
+    --accent-text: #0b0f18;
+    --danger: #f97066;
+    --code-bg: #14161a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+header h1 { margin: 0; font-size: 1.8rem; }
+.sub, .muted { color: var(--muted); }
+.sub { margin: 4px 0 24px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.card h2 { margin: 0 0 12px; font-size: 1.1rem; }
+
+form, .row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+
+input {
+  flex: 1 1 220px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+button {
+  padding: 10px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  cursor: pointer;
+}
+button.secondary { background: transparent; color: var(--accent); }
+button.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+button:hover { opacity: 0.85; }
+
+.error { color: var(--danger); margin: 4px 0 0; }
+.result { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.result a { color: var(--accent); word-break: break-all; font-weight: 600; }
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.85rem;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+li button.recent {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  margin-bottom: 6px;
+  display: flex;
+  gap: 12px;
+}
+li button.recent .code { font-weight: 600; color: var(--accent); }
+li button.recent .target { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

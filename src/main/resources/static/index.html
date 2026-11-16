@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>URL Shortener</h1>
+      <p class="sub">Create, inspect, update and delete short links.</p>
+    </header>
+
+    <section class="card">
+      <h2>Shorten a URL</h2>
+      <form id="create-form" novalidate>
+        <input id="url-input" type="text" placeholder="https://example.com/a/very/long/link" autocomplete="off" aria-label="URL to shorten">
+        <button type="submit">Shorten</button>
+      </form>
+      <p id="create-error" class="error" hidden></p>
+      <div id="result" class="result" hidden>
+        <span>Your short link:</span>
+        <a id="result-link" target="_blank" rel="noopener"></a>
+        <button id="copy-btn" type="button" class="secondary">Copy</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Manage a short code</h2>
+      <div class="row">
+        <input id="code-input" type="text" placeholder="Short code, e.g. aB3xY9z" autocomplete="off" aria-label="Short code">
+        <button id="btn-get" type="button" class="secondary">Get</button>
+        <button id="btn-stats" type="button" class="secondary">Stats</button>
+        <button id="btn-delete" type="button" class="danger">Delete</button>
+      </div>
+      <div class="row">
+        <input id="new-url-input" type="text" placeholder="New destination URL" autocomplete="off" aria-label="New destination URL">
+        <button id="btn-update" type="button">Update</button>
+      </div>
+      <pre id="output" aria-live="polite">Responses appear here.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Recent links</h2>
+      <p id="recent-empty" class="muted">Links you create in this browser will show up here.</p>
+      <ul id="recent-list"></ul>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
