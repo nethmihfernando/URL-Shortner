@@ -1,53 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>URL Shortener</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snipit | URL Shortener</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <header>
-      <h1>URL Shortener</h1>
-      <p class="sub">Create, inspect, update and delete short links.</p>
-    </header>
+<header class="nav"><div class="wrap nav-in">
+  <a class="logo" href="#top"><span class="mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>Snipit</a>
+  <nav><a href="#features">Features</a><a href="#links">My links</a><a href="#faq">FAQ</a></nav>
+  <a class="btn btn-accent sm" href="#top">Shorten a link</a>
+</div></header>
 
-    <section class="card">
-      <h2>Shorten a URL</h2>
-      <form id="create-form" novalidate>
-        <input id="url-input" type="text" placeholder="https://example.com/a/very/long/link" autocomplete="off" aria-label="URL to shorten">
-        <button type="submit">Shorten</button>
-      </form>
-      <p id="create-error" class="error" hidden></p>
-      <div id="result" class="result" hidden>
-        <span>Your short link:</span>
-        <a id="result-link" target="_blank" rel="noopener"></a>
-        <button id="copy-btn" type="button" class="secondary">Copy</button>
-      </div>
-    </section>
+<main id="top">
+<section class="hero"><div class="wrap">
+  <h1>Short links, <span>big results</span></h1>
+  <p class="lead">Paste a long URL and get a clean short link you can share anywhere, then watch the clicks come in.</p>
+  <form id="create-form" class="shorten" novalidate>
+    <input id="url-input" type="text" placeholder="Paste your long link here, e.g. https://example.com/very/long/path" autocomplete="off" aria-label="URL to shorten">
+    <button class="btn btn-accent" type="submit">Shorten URL</button>
+  </form>
+  <p id="create-error" class="err on-dark" role="alert" hidden></p>
+  <div id="result" class="result" hidden>
+    <div><span class="ok">&#10003; Your short link is ready</span><a id="result-link" target="_blank" rel="noopener"></a></div>
+    <div class="acts"><button id="copy-btn" class="btn btn-ghost sm" type="button">Copy</button><button id="result-details" class="btn btn-ghost sm" type="button">Details</button></div>
+  </div>
+  <ul class="perks"><li>Free to use</li><li>No sign-up</li><li>Click tracking</li><li>Edit anytime</li></ul>
+</div></section>
 
-    <section class="card">
-      <h2>Manage a short code</h2>
-      <div class="row">
-        <input id="code-input" type="text" placeholder="Short code, e.g. aB3xY9z" autocomplete="off" aria-label="Short code">
-        <button id="btn-get" type="button" class="secondary">Get</button>
-        <button id="btn-stats" type="button" class="secondary">Stats</button>
-        <button id="btn-delete" type="button" class="danger">Delete</button>
-      </div>
-      <div class="row">
-        <input id="new-url-input" type="text" placeholder="New destination URL" autocomplete="off" aria-label="New destination URL">
-        <button id="btn-update" type="button">Update</button>
-      </div>
-      <pre id="output" aria-live="polite">Responses appear here.</pre>
-    </section>
+<section id="links" class="wrap section">
+  <div class="head">
+    <div><h2>Your links</h2><p class="muted">Links created in this browser. Find any short code to manage it.</p></div>
+    <form id="lookup-form" class="lookup" novalidate>
+      <input id="lookup-input" type="text" placeholder="Find a short code" autocomplete="off" aria-label="Short code">
+      <button class="btn btn-ghost sm" type="submit">Find</button>
+      <button id="refresh-btn" class="btn btn-ghost sm" type="button">Refresh clicks</button>
+    </form>
+  </div>
+  <p id="lookup-error" class="err" role="alert" hidden></p>
+  <div id="link-list" class="list"></div>
+  <p id="empty" class="empty">No links yet. Shorten your first URL above.</p>
+</section>
 
-    <section class="card">
-      <h2>Recent links</h2>
-      <p id="recent-empty" class="muted">Links you create in this browser will show up here.</p>
-      <ul id="recent-list"></ul>
-    </section>
-  </main>
-  <script src="app.js"></script>
+<section id="features" class="band"><div class="wrap">
+  <h2>Everything you need to share links</h2>
+  <div class="grid">
+    <article><h3>Fast and simple</h3><p>Paste, click, copy. Short codes are generated instantly and are always unique.</p></article>
+    <article><h3>Click tracking</h3><p>Every visit through your short link is counted so you can see what gets used.</p></article>
+    <article><h3>Change the destination</h3><p>Point an existing short link somewhere new without sharing a new link.</p></article>
+    <article><h3>Safe by default</h3><p>Only valid http and https links are accepted, and bad input gets a clear error.</p></article>
+  </div>
+</div></section>
+
+<section id="faq" class="wrap section narrow">
+  <h2>Frequently asked questions</h2>
+  <details><summary>How does a URL shortener work?</summary><p>It stores your long URL under a short random code. When someone opens the short link, they are redirected to the original URL and the visit is counted.</p></details>
+  <details><summary>Do short links expire?</summary><p>No. A link works until you delete it.</p></details>
+  <details><summary>Can I change where a link points?</summary><p>Yes. Open a link's details, choose Edit destination, and save. The short link stays the same.</p></details>
+  <details><summary>Why can't I see my old links?</summary><p>The list is saved in this browser only. Use Find a short code to load any link by its code.</p></details>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">Snipit &middot; Built with Spring Boot and MongoDB</div></footer>
+
+<dialog id="dlg"><div class="dlg-in">
+  <div class="dlg-head"><h3>Link details</h3><button id="dlg-close" class="x" type="button" aria-label="Close">&times;</button></div>
+  <label class="lbl">Short link</label>
+  <div class="copyrow"><a id="d-short" target="_blank" rel="noopener"></a><button id="d-copy" class="btn btn-ghost sm" type="button">Copy</button></div>
+  <label class="lbl">Destination</label>
+  <p id="d-url" class="dest"></p>
+  <form id="d-edit" hidden novalidate>
+    <input id="d-input" type="text" aria-label="New destination URL">
+    <div class="acts"><button id="d-cancel" class="btn btn-ghost sm" type="button">Cancel</button><button class="btn btn-accent sm" type="submit">Save</button></div>
+  </form>
+  <p id="d-error" class="err" role="alert" hidden></p>
+  <div class="stats">
+    <div><b id="d-clicks">0</b><span>Total clicks</span></div>
+    <div><b id="d-created"></b><span>Created</span></div>
+    <div><b id="d-updated"></b><span>Last updated</span></div>
+  </div>
+  <div id="d-actions" class="acts"><button id="d-edit-btn" class="btn btn-ghost" type="button">Edit destination</button><button id="d-delete-btn" class="btn btn-danger" type="button">Delete</button></div>
+  <div id="d-confirm" class="confirm" hidden><p>Delete this link permanently? It will stop working.</p><div class="acts"><button id="d-no" class="btn btn-ghost sm" type="button">Keep it</button><button id="d-yes" class="btn btn-danger sm" type="button">Yes, delete</button></div></div>
+</div></dialog>
+<div id="toast" class="toast" role="status"></div>
+<script src="app.js"></script>
 </body>
 </html>
