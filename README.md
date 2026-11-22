@@ -4,11 +4,15 @@ A fast URL shortener with click tracking. Paste a long link, get a short one, an
 
 ## Screenshots
 
-![Home page](docs/screenshots/home.png)
-
-![Your links](docs/screenshots/links.png)
-
-![Link details](docs/screenshots/details.png)
+<p align="center">
+  <img src="assets/ss1.png" alt="The Front Page of the Website" width="500">
+</p><br>
+<p align="center">
+  <img src="assets/ss2.png" alt="The Front Page of the Website" width="500">
+</p><br>
+<p align="center">
+  <img src="assets/ss3.png" alt="The Front Page of the Website" width="500">
+</p><br>
 
 ## Features
 
